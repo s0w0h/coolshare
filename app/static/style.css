@@ -1,0 +1,269 @@
+/* 基础样式 */
+body {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+	color: #333;
+}
+
+.container {
+	max-width: 600px;
+	margin: 30px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	/* 垂直居中对齐 */
+	justify-content: center;
+	/* 水平居中对齐 */
+}
+
+.logo {
+	height: 3em;
+	/* 与标题文字大小相同 */
+	margin-right: 5px;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #222;
+}
+
+textarea {
+	display: block;
+	width: 100%;
+	min-height: 300px;
+	max-height: 700px;
+	padding: 12px;
+	border: 1px solid #9d9a9a;
+	border-radius: 4px;
+	resize: none;
+	font-family: "Courier New", Courier, monospace;
+	box-sizing: border-box;
+	word-break: break-all;
+	overflow-y: auto;
+	line-height: 1.5;
+	transition: height 0.1s ease-in-out;
+}
+
+/* 输入框组 */
+.input-group {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.input-group input {
+	flex: 1;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px 0 0 4px;
+}
+
+.input-group button {
+	padding: 10px 15px;
+	border: 1px solid #28a745;
+	border-radius: 0 4px 4px 0;
+	background-color: #28a745;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.input-group button:hover {
+	background-color: #218838;
+}
+
+/* 选项 */
+.options {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.option {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	flex: 1 1 45%;
+}
+
+.option label {
+	margin-right: 8px;
+	color: #555;
+	white-space: nowrap;
+}
+
+.option input,
+.option select {
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+/* 按钮组 */
+.button-group {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+button {
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#share-button {
+	background-color: #007bff;
+	color: white;
+}
+
+#share-button:hover {
+	background-color: #0069d9;
+}
+
+#destroy-button {
+	background-color: #ced4da;
+	color: #333;
+}
+
+#destroy-button:hover {
+	background-color: #adb5bd;
+}
+
+#copy-message {
+	display: none;
+	/* 默认隐藏 */
+	margin-top: 5px;
+	padding: 8px 12px;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+.success-message {
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+}
+
+.error-message {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+}
+
+/* 结果区域 */
+.hidden {
+	display: none;
+}
+
+#result {
+	margin-top: 20px;
+	padding: 20px;
+	background-color: #f8f9fa;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.success {
+	color: #28a745;
+}
+
+#copy-button {
+	margin-top: 10px;
+	background-color: #28a745;
+	color: white;
+}
+
+#copy-button:hover {
+	background-color: #218838;
+}
+
+@media (max-width: 500px) {
+	.option {
+		flex: 1 1 100%;
+		margin-bottom: 10px;
+	}
+}
+
+/* 页脚 */
+.footer {
+	background-color: #f8f9fa;
+	padding: 20px 0;
+	text-align: center;
+	font-size: 14px;
+	color: #6c757d;
+	border-top: 1px solid #e9ecef;
+	margin-top: 40px;
+}
+
+.footer-content {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.footer p {
+	margin: 5px 0;
+}
+
+.footer a {
+	color: #007bff;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.footer a:hover {
+	color: #0056b3;
+	text-decoration: underline;
+}
+
+.footer p:last-child a::before {
+	content: "⚖ ";
+	margin-right: 2px;
+}
+
+/* GitHub Corner styles */
+.github-corner:hover .octo-arm {
+	animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+
+	0%,
+	100% {
+		transform: rotate(0)
+	}
+
+	20%,
+	60% {
+		transform: rotate(-25deg)
+	}
+
+	40%,
+	80% {
+		transform: rotate(10deg)
+	}
+}
+
+@media (max-width:500px) {
+	.github-corner:hover .octo-arm {
+		animation: none
+	}
+
+	.github-corner .octo-arm {
+		animation: octocat-wave 560ms ease-in-out
+	}
+}
