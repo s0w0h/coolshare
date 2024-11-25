@@ -2,7 +2,7 @@
 <img src="../assets/logo.png" alt="coolshare" width="200">
 </p>
 <h1 align="center">
-  CoolShare - Lightweight Code Snippet Sharing Tool
+  CoolShare - Lightweight Text and code Snippet Sharing Tool
 </h1>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## Introduction
 
-`CoolShare` is a lightweight and easy-to-use code snippet sharing tool designed to help individuals and teams quickly build an internal code collaboration and sharing platform.
+`CoolShare` is a lightweight and easy-to-use Text and code snippet sharing tool designed to help individuals and teams quickly build an internal code collaboration and sharing platform.
 
 ## Features
 
