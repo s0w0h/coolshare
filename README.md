@@ -2,7 +2,7 @@
 <img src="assets/logo.png" alt="coolshare" width="200">
 </p>
 <h1 align="center">
-  CoolShare - 轻量级代码片段分享工具
+  CoolShare - 轻量级文本和代码片段分享工具
 </h1>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## 简介
 
-`CoolShare` 是一款轻量级、易用的代码片段分享工具，旨在帮助个人和团队快速搭建内部代码协作共享平台。
+`CoolShare` 是一款轻量级、易用的文本和代码片段分享工具，旨在帮助个人和团队快速搭建内部代码协作共享平台。
 
 ## 特性
 
