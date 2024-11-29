@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app /app
 
 ENV ACCESS_PASSWORD=""
+ENV SECRET_KEY=""
 ENV MAX_SHARE_TIME=4320
 ENV REQUEST_LIMIT=24
 ENV TIME_WINDOW=60

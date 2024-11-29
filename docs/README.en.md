@@ -67,6 +67,7 @@ docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/cool
 | Environment Variable Name | Description                                                        | Required | Default Value |
 | ------------------------ | ------------------------------------------------------------------ | -------- | ------ |
 | ACCESS_PASSWORD          | Home & Share Login Password                                        | false    | None   |
+| SECRET_KEY               | Used to initialize the Signature Session Cookie                    | false    | Randomly generate|
 | MAX_SHARE_TIME           | Maximum sharing time, in minutes                                   | false    | 4320  |
 | REQUEST_LIMIT            | Total number of creations and deletions allowed within the time window | false    | 24     |
 | TIME_WINDOW              | Time window, in seconds                                            | false    | 60     |

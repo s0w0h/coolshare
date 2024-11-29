@@ -67,6 +67,7 @@ docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/cool
 | 环境变量名               | 说明                                                          | 是否必须 | 默认值 |
 | ------------------------ | ------------------------------------------------------------- | -------- | ------ |
 | ACCESS_PASSWORD          | 主页及分享登录密码                                             | false    | None   |
+| SECRET_KEY               | 用于初始化签名Session Cookie                                 | false    | 随机生成24位|
 | MAX_SHARE_TIME           | 最长分享时间，单位分钟                                        | false    | 4320  |
 | REQUEST_LIMIT            | 时间窗口内限制创建和删除总数量                                | false    | 24     |
 | TIME_WINDOW              | 时间窗口，单位秒                                             | false    | 60     |
