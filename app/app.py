@@ -10,6 +10,7 @@ from collections import OrderedDict, defaultdict
 from functools import wraps
 from datetime import datetime, timedelta, timezone
 import bcrypt
+import secrets
 
 ACCESS_PASSWORD = os.environ.get("ACCESS_PASSWORD", "")
 hashed_password = bcrypt.hashpw(ACCESS_PASSWORD.encode('utf-8'), bcrypt.gensalt()) if ACCESS_PASSWORD else None
@@ -21,6 +22,11 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+
+SECRET_KEY = os.environ.get("SECRET_KEY")
+if not SECRET_KEY:
+    SECRET_KEY = secrets.token_urlsafe(24)
+app.secret_key = SECRET_KEY
 
 # 限速参数
 REQUEST_LIMIT = int(os.environ.get("REQUEST_LIMIT", 24))  # 每分钟允许的请求次数
