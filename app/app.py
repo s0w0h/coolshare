@@ -4,12 +4,15 @@ import string
 import base64
 import time
 import threading
-from flask import Flask, request, jsonify, render_template, abort
+from flask import Flask, request, jsonify, render_template, abort, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from collections import OrderedDict, defaultdict
 from functools import wraps
 from datetime import datetime, timedelta, timezone
+import bcrypt
 
+ACCESS_PASSWORD = os.environ.get("ACCESS_PASSWORD", "")
+hashed_password = bcrypt.hashpw(ACCESS_PASSWORD.encode('utf-8'), bcrypt.gensalt()) if ACCESS_PASSWORD else None
 MAX_SHARE_TIME = float(os.environ.get("MAX_SHARE_TIME", 4320))
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, static_url_path="/static", static_folder="static")
@@ -127,14 +130,39 @@ cleanup_thread = threading.Thread(target=cleanup_expired_shares)
 cleanup_thread.daemon = True  # 设置为守护线程
 cleanup_thread.start()
 
+def is_password_protected():
+    return hashed_password is not None
+
+def login_required(func):
+    @wraps(func)
+    def decorated_view(*args, **kwargs):
+        if is_password_protected() and not session.get('authenticated'):
+            return redirect(url_for('login'))
+        return func(*args, **kwargs)
+    return decorated_view
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if not is_password_protected():
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        password = request.form['password'].encode('utf-8')
+        if hashed_password and bcrypt.checkpw(password, hashed_password):
+            session['authenticated'] = True
+            return redirect(url_for('index'))
+        else:
+            return 'Invalid password'
+    return render_template('login.html')
 
 @app.route("/", methods=["GET"])
+@login_required
 def index():
     return render_template("index.html")
 
 
 @app.route("/share", methods=["POST"])
 @rate_limit
+@login_required
 def share_code():
     data = request.json
     code_content = data.get("code")
