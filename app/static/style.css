@@ -19,14 +19,11 @@ body {
 .header {
 	display: flex;
 	align-items: center;
-	/* 垂直居中对齐 */
 	justify-content: center;
-	/* 水平居中对齐 */
 }
 
 .logo {
 	height: 3em;
-	/* 与标题文字大小相同 */
 	margin-right: 5px;
 }
 
@@ -113,7 +110,7 @@ textarea {
 /* 按钮组 */
 .button-group {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
@@ -135,18 +132,8 @@ button {
 	background-color: #0069d9;
 }
 
-#destroy-button {
-	background-color: #ced4da;
-	color: #333;
-}
-
-#destroy-button:hover {
-	background-color: #adb5bd;
-}
-
 #copy-message {
 	display: none;
-	/* 默认隐藏 */
 	margin-top: 5px;
 	padding: 8px 12px;
 	border-radius: 4px;
@@ -237,33 +224,33 @@ button {
 
 /* GitHub Corner styles */
 .github-corner:hover .octo-arm {
-	animation: octocat-wave 560ms ease-in-out
+	animation: octocat-wave 560ms ease-in-out;
 }
 
 @keyframes octocat-wave {
 
 	0%,
 	100% {
-		transform: rotate(0)
+		transform: rotate(0);
 	}
 
 	20%,
 	60% {
-		transform: rotate(-25deg)
+		transform: rotate(-25deg);
 	}
 
 	40%,
 	80% {
-		transform: rotate(10deg)
+		transform: rotate(10deg);
 	}
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
 	.github-corner:hover .octo-arm {
-		animation: none
+		animation: none;
 	}
 
 	.github-corner .octo-arm {
-		animation: octocat-wave 560ms ease-in-out
+		animation: octocat-wave 560ms ease-in-out;
 	}
 }
