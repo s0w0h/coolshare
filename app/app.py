@@ -11,9 +11,11 @@ from functools import wraps
 from datetime import datetime, timedelta, timezone
 import bcrypt
 import secrets
+import click
 
 ACCESS_PASSWORD = os.environ.get("ACCESS_PASSWORD", "")
 hashed_password = bcrypt.hashpw(ACCESS_PASSWORD.encode('utf-8'), bcrypt.gensalt()) if ACCESS_PASSWORD else None
+SECRET_KEY = os.environ.get("SECRET_KEY")
 MAX_SHARE_TIME = float(os.environ.get("MAX_SHARE_TIME", 4320))
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -25,7 +27,13 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+@app.cli.command("init-db")
+def init_db():
+    """Initialize the database."""
+    with app.app_context():
+        db.create_all()
+    click.echo("Initialized the database.")
+
 if not SECRET_KEY:
     SECRET_KEY = secrets.token_urlsafe(24)
 app.secret_key = SECRET_KEY
@@ -264,4 +272,4 @@ def internal_error(error):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run()
