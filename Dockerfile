@@ -20,6 +20,9 @@ ENV CLEANUP_INTERVAL_MINUTES=30
 ENV PENALTY_DURATION=5
 ENV MAX_CACHE_SIZE=1000
 
+# 检查并创建 coolshare.db 文件
+RUN test -f /app/db/coolshare.db || touch /app/db/coolshare.db
+
 # 暴露 Flask 应用端口
 EXPOSE 5000
 
