@@ -19,9 +19,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, static_url_path="/static", static_folder="static")
 
 # 数据库文件路径
-db_path = os.path.join(basedir, "db/coolshare.db")
+# db_path = os.path.join(basedir, "db/coolshare.db")
+db_path = "/app/db/coolshare.db"
 # 检查数据库文件是否存在，不存在则创建
 if not os.path.exists(db_path):
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)  # 创建目录，如果不存在
     open(db_path, 'a').close()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + db_path
