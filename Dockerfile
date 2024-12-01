@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # 复制应用代码
 COPY ./app /app
-RUN mkdir /app/db
+RUN mkdir -p /app/db
 
 ENV ACCESS_PASSWORD=""
 ENV SECRET_KEY=""
@@ -20,11 +20,12 @@ ENV CLEANUP_INTERVAL_MINUTES=30
 ENV PENALTY_DURATION=5
 ENV MAX_CACHE_SIZE=1000
 
-# 检查并创建 coolshare.db 文件
-RUN test -f /app/db/coolshare.db || touch /app/db/coolshare.db
+# 复制 entrypoint 脚本并设置为可执行
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # 暴露 Flask 应用端口
 EXPOSE 5000
 
-# 设置启动命令
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "app:app"] 
+# 设置 entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
