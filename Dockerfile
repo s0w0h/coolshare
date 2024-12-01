@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # 复制应用代码
 COPY ./app /app
+RUN mkdir /app/db
 
 ENV ACCESS_PASSWORD=""
 ENV SECRET_KEY=""
