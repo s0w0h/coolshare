@@ -17,9 +17,14 @@ hashed_password = bcrypt.hashpw(ACCESS_PASSWORD.encode('utf-8'), bcrypt.gensalt(
 MAX_SHARE_TIME = float(os.environ.get("MAX_SHARE_TIME", 4320))
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, static_url_path="/static", static_folder="static")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
-    basedir, "coolshare.db"
-)
+
+# 数据库文件路径
+db_path = os.path.join(basedir, "coolshare.db")
+# 检查数据库文件是否存在，不存在则创建
+if not os.path.exists(db_path):
+    open(db_path, 'a').close()
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + db_path
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
