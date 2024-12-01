@@ -4,9 +4,7 @@ if [ ! -f "/app/db/coolshare.db" ]; then
   echo "coolshare.db not found, creating a new one..."
   touch /app/db/coolshare.db
   echo "Initializing database..."
-  flask run --init-db &
-  sleep 5
-  pkill -f "flask run"
+  flask init-db
 else
   echo "coolshare.db found, skipping creation."
 fi
