@@ -19,7 +19,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__, static_url_path="/static", static_folder="static")
 
 # 数据库文件路径
-db_path = os.path.join(basedir, "coolshare.db")
+db_path = os.path.join(basedir, "db/coolshare.db")
 # 检查数据库文件是否存在，不存在则创建
 if not os.path.exists(db_path):
     print(db_path)
