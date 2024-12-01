@@ -56,10 +56,10 @@
 docker run -d --name coolshare --restart always -p 5000:5000 s0w0h/coolshare:latest
 
 # Persist database
-docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/coolshare.db:/app/coolshare.db s0w0h/coolshare:latest
+docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/db:/app/db s0w0h/coolshare:latest
 
 # Configure environment variables
-docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/coolshare.db:/app/coolshare.db -e MAX_SHARE_TIME=100 s0w0h/coolshare:latest
+docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/db:/app/db -e MAX_SHARE_TIME=100 s0w0h/coolshare:latest
 ```
 
 ## Environment Variables

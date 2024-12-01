@@ -56,10 +56,10 @@
 docker run -d --name coolshare --restart always -p 5000:5000 s0w0h/coolshare:latest
 
 # 持久化数据库
-docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/coolshare.db:/app/coolshare.db s0w0h/coolshare:latest
+docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/db:/app/db s0w0h/coolshare:latest
 
 # 配置环境变量
-docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/coolshare.db:/app/coolshare.db -e MAX_SHARE_TIME=100 s0w0h/coolshare:latest
+docker run -d --name coolshare --restart always -p 5000:5000 -v ~/coolshare/db:/app/db -e MAX_SHARE_TIME=100 s0w0h/coolshare:latest
 ```
 
 ## 环境变量

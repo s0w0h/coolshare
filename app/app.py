@@ -27,13 +27,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-@app.cli.command("init-db")
-def init_db():
-    """Initialize the database."""
-    with app.app_context():
-        db.create_all()
-    click.echo("Initialized the database.")
-
 if not SECRET_KEY:
     SECRET_KEY = secrets.token_urlsafe(24)
 app.secret_key = SECRET_KEY
