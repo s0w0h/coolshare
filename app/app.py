@@ -22,6 +22,7 @@ app = Flask(__name__, static_url_path="/static", static_folder="static")
 db_path = os.path.join(basedir, "coolshare.db")
 # 检查数据库文件是否存在，不存在则创建
 if not os.path.exists(db_path):
+    print(db_path)
     open(db_path, 'a').close()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + db_path
